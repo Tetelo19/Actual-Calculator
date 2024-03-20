@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tetelo's Calculator</title>
+
+<body>
+<div class="calculator">
+  <h2><span class="moving-text">Tetelo's Calculator</span></h2>
+  <div class="calculator-screen" id="screen"></div>
+  <div class="calculator-keys">
+    <button onclick="clearScreen()">C</button>
+    <button onclick="appendOperator('/')">÷</button>
+    <button onclick="appendOperator('*')">x</button>
+    <button onclick="appendOperator('-')">-</button>
+    <button onclick="appendNumber(7)">9</button>
+    <button onclick="appendNumber(8)">8</button>
+    <button onclick="appendNumber(9)">7</button>
+    <button onclick="appendOperator('+')">+</button>
+    <button onclick="appendNumber(5)">6</button>
+    <button onclick="appendNumber(6)">5</button>
+    <button onclick="appendNumber(4)">4</button>
+    <button onclick="appendOperator('.')">.</button>
+    <button onclick="appendNumber(2)">3</button>
+    <button onclick="appendNumber(3)">2</button>
+    <button onclick="appendNumber(1)">1</button>
+    <button onclick="appendNumber(0)">0</button>
+    <button onclick="calculate()">=</button>
+  </div>
+</div>
+<script>
+  let screen = document.getElementById('screen');
+  let currentInput = '';
+
+  function appendNumber(number) {
+    currentInput += number;
+    screen.textContent = currentInput;
+  }
+
+  function appendOperator(operator) {
+    currentInput += operator;
+    screen.textContent = currentInput;
+  }
+
+  function clearScreen() {
+    currentInput = '';
+    screen.textContent = '';
+  }
+
+  function calculate() {
+    try {
+      let result = eval(currentInput);
+      screen.textContent = result;
+      currentInput = result;
+    } catch (error) {
+      screen.textContent = 'Error';
+      currentInput = '';
+    }
+  }
+</script>
+</body>
+</html>
